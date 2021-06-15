@@ -60,7 +60,13 @@ class _ListDetailState extends State<ListDetail> {
             child: ListView.builder(
                 itemCount: details.length,
                 itemBuilder: (context, index) {
-                  return PostThumbnail(details[index]);
+                  List<Map<String, dynamic>> detailsFix = [];
+                  for (int i = 0; i < details.length; i++) {
+                    if (details[i]['userId'].toString() == id) {
+                      detailsFix.add(details[i]);
+                    }
+                  }
+                  return PostThumbnail(detailsFix[index]);
                 }),
           ),
         ),
