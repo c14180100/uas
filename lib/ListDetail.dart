@@ -17,10 +17,16 @@ class _ListDetailState extends State<ListDetail> {
   _ListDetailState(this.id, this.nama);
 
   List<Map<String, dynamic>> details = [];
+  List<Map<String, dynamic>> detailsFix = [];
 
   void getAPI() {
     UserData.connectToAPIDetails("posts").then((value) {
       details = value;
+      for (int i = 0; i < details.length; i++) {
+        if (details[i]['userId'].toString() == id) {
+          detailsFix.add(details[i]);
+        }
+      }
       setState(() {});
     });
   }
@@ -61,14 +67,8 @@ class _ListDetailState extends State<ListDetail> {
             children: [
               Flexible(
                 child: ListView.builder(
-                    itemCount: details.length,
+                    itemCount: detailsFix.length,
                     itemBuilder: (context, index) {
-                      List<Map<String, dynamic>> detailsFix = [];
-                      for (int i = 0; i < details.length; i++) {
-                        if (details[i]['userId'].toString() == id) {
-                          detailsFix.add(details[i]);
-                        }
-                      }
                       return PostThumbnail(detailsFix[index]);
                     }),
               ),
