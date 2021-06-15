@@ -31,6 +31,7 @@ class _ListDetailState extends State<ListDetail> {
   }
 
   @override
+  // ignore: must_call_super
   void initState() {
     asyncAPI();
   }
@@ -56,18 +57,28 @@ class _ListDetailState extends State<ListDetail> {
           horizontal: 25,
         ),
         child: Center(
-          child: Flexible(
-            child: ListView.builder(
-                itemCount: details.length,
-                itemBuilder: (context, index) {
-                  List<Map<String, dynamic>> detailsFix = [];
-                  for (int i = 0; i < details.length; i++) {
-                    if (details[i]['userId'].toString() == id) {
-                      detailsFix.add(details[i]);
-                    }
-                  }
-                  return PostThumbnail(detailsFix[index]);
-                }),
+          child: Column(
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    getAPI();
+                    print(details);
+                  },
+                  child: Text("woi")),
+              Flexible(
+                child: ListView.builder(
+                    itemCount: details.length,
+                    itemBuilder: (context, index) {
+                      List<Map<String, dynamic>> detailsFix = [];
+                      for (int i = 0; i < details.length; i++) {
+                        if (details[i]['userId'].toString() == id) {
+                          detailsFix.add(details[i]);
+                        }
+                      }
+                      return PostThumbnail(detailsFix[index]);
+                    }),
+              ),
+            ],
           ),
         ),
       ),

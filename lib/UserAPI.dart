@@ -26,7 +26,7 @@ class UserData {
   static Future<List<Map<String, dynamic>>> connectToAPIDetails(
       String dest) async {
     String urlAPI = 'jsonplaceholder.typicode.com';
-    var destination = '/users' + dest;
+    var destination = '/' + dest;
     var apiResult = await http.get(Uri.https(urlAPI, destination));
     var jsonObject = json.decode(apiResult.body);
     var data = jsonObject;
@@ -34,6 +34,7 @@ class UserData {
     for (int i = 0; i < data.length; i++) {
       listData.add(data[i]);
     }
+    print(listData);
     return listData;
   }
 }
