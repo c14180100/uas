@@ -59,12 +59,6 @@ class _ListDetailState extends State<ListDetail> {
         child: Center(
           child: Column(
             children: [
-              ElevatedButton(
-                  onPressed: () {
-                    getAPI();
-                    print(details);
-                  },
-                  child: Text("woi")),
               Flexible(
                 child: ListView.builder(
                     itemCount: details.length,
