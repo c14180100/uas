@@ -5,16 +5,16 @@ import 'UserAPI.dart';
 import 'postThumbnail.dart';
 
 class ListDetail extends StatefulWidget {
-  final String id;
-  ListDetail({this.id});
+  final String id, nama;
+  ListDetail(this.id, this.nama);
 
   @override
-  _ListDetailState createState() => _ListDetailState(id: id);
+  _ListDetailState createState() => _ListDetailState(id, nama);
 }
 
 class _ListDetailState extends State<ListDetail> {
-  final String id;
-  _ListDetailState({this.id});
+  final String id, nama;
+  _ListDetailState(this.id, this.nama);
 
   List<Map<String, dynamic>> details = [];
 
@@ -40,7 +40,7 @@ class _ListDetailState extends State<ListDetail> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(29, 41, 59, 0.8),
-        title: Text(""),
+        title: Text("Post By " + nama),
         elevation: 0,
       ),
       body: Container(

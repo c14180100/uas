@@ -13,12 +13,9 @@ class Thumbnail extends StatelessWidget {
     return InkWell(
       onTap: () {
         String id = userData['id'].toString();
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ListDetail(
-                      id: id,
-                    )));
+        String nama = userData['id'].toString();
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ListDetail(id, nama)));
       },
       child: Container(
         margin: EdgeInsets.only(
